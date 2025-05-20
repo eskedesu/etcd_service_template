@@ -1,4 +1,4 @@
-PROJECT_NAME = service_template
+PROJECT_NAME = etcd_service_template
 NPROCS ?= $(shell nproc)
 CLANG_FORMAT ?= clang-format
 DOCKER_IMAGE ?= ghcr.io/userver-framework/ubuntu-24.04-userver:latest
@@ -59,8 +59,8 @@ install: install-release
 # Format the sources
 .PHONY: format
 format:
-	find src -name '*pp' -type f | xargs $(CLANG_FORMAT) -i
-	find tests -name '*.py' -type f | xargs autopep8 -i
+	find third_party/userver/etcd -name '*pp' -type f | xargs $(CLANG_FORMAT) -i
+	find third_party/userver/etcd -name '*.py' -type f | xargs autopep8 -i
 
 # Start targets makefile in docker wrapper.
 # The docker mounts the whole service's source directory,
